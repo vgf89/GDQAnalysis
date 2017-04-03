@@ -17,7 +17,6 @@ class DonationSpider(scrapy.Spider):
                                 'game': row.css('a::text').extract_first(),
                                 'players': clean_html(row.css('td').extract()[1]),
                                 'description': clean_html(row.css('td').extract()[2]),
-                                #'players': '',
                                 'starttime': row.css('.datetime::text').extract()[0],
                                 'endtime': row.css('.datetime::text').extract()[1],
                                 'bidwars': clean_html(row.css('td').extract()[5])

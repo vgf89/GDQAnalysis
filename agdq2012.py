@@ -7,7 +7,7 @@ class DonationSpider(scrapy.Spider):
 
         def start_requests(self):
                 urls = []
-                for x in range(1, 24):
+                for x in range(1, 119):
                         urls.append('https://gamesdonequick.com/tracker/donations/agdq2012?page=' + str(x))
                 for url in urls:
                         yield scrapy.Request(url=url, callback=self.parse)
