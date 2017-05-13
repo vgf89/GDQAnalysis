@@ -1,0 +1,35 @@
+X Basic stats of donations for each event (12 events, view all in a table, ~30 minutes):
+	mean
+	median
+	mode
+	standard deviation
+	sum
+
+X Histograms for donations of each event (12 events) (~ 30 minutes)
+	- Actually, just did SGDQ 2011 and 2016, as well as AGDQ 2012 and 2017
+
+
+X Line Plot of Donation totals over the course of each event
+	X Need to make a column of time passed relative to the beginning of the event
+	X 12 Lines on a single plot
+
+X Bar charts of Amount earned by each run (repeats analysis of other dude) (~30 minutes)
+	2015-2017 (previous years has schedule issues)
+
+
+
+X Plot of amount earned by each event (pull donation totals from site) (~30min - 2hr)
+	X Linear Regressions
+	X Predict amount for SGDQ2017 and AGDQ2018
+
+
+X 25-30 min Presentation (~3 hours since need practice too)
+
+X Take-home section of test (1-2 hrs)
+
+X Tech Writing Revisions (1 hr)
+
+
+
+
+Paper (5 hrs, 5+ pages)
