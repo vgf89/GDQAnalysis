@@ -1,0 +1,856 @@
+
+%% bare_jrnl.tex
+%% V1.4b
+%% 2015/08/26
+%% by Michael Shell
+%% see http://www.michaelshell.org/
+%% for current contact information.
+%%
+%% This is a skeleton file demonstrating the use of IEEEtran.cls
+%% (requires IEEEtran.cls version 1.8b or later) with an IEEE
+%% journal paper.
+%%
+%% Support sites:
+%% http://www.michaelshell.org/tex/ieeetran/
+%% http://www.ctan.org/pkg/ieeetran
+%% and
+%% http://www.ieee.org/
+
+%%*************************************************************************
+%% Legal Notice:
+%% This code is offered as-is without any warranty either expressed or
+%% implied; without even the implied warranty of MERCHANTABILITY or
+%% FITNESS FOR A PARTICULAR PURPOSE! 
+%% User assumes all risk.
+%% In no event shall the IEEE or any contributor to this code be liable for
+%% any damages or losses, including, but not limited to, incidental,
+%% consequential, or any other damages, resulting from the use or misuse
+%% of any information contained here.
+%%
+%% All comments are the opinions of their respective authors and are not
+%% necessarily endorsed by the IEEE.
+%%
+%% This work is distributed under the LaTeX Project Public License (LPPL)
+%% ( http://www.latex-project.org/ ) version 1.3, and may be freely used,
+%% distributed and modified. A copy of the LPPL, version 1.3, is included
+%% in the base LaTeX documentation of all distributions of LaTeX released
+%% 2003/12/01 or later.
+%% Retain all contribution notices and credits.
+%% ** Modified files should be clearly indicated as such, including  **
+%% ** renaming them and changing author support contact information. **
+%%*************************************************************************
+
+
+% *** Authors should verify (and, if needed, correct) their LaTeX system  ***
+% *** with the testflow diagnostic prior to trusting their LaTeX platform ***
+% *** with production work. The IEEE's font choices and paper sizes can   ***
+% *** trigger bugs that do not appear when using other class files.       ***                          ***
+% The testflow support page is at:
+% http://www.michaelshell.org/tex/testflow/
+
+
+
+\documentclass[journal]{IEEEtran}
+
+\usepackage{listings}
+%
+% If IEEEtran.cls has not been installed into the LaTeX system files,
+% manually specify the path to it like:
+% \documentclass[journal]{../sty/IEEEtran}
+
+
+
+
+
+% Some very useful LaTeX packages include:
+% (uncomment the ones you want to load)
+
+
+% *** MISC UTILITY PACKAGES ***
+%
+%\usepackage{ifpdf}
+% Heiko Oberdiek's ifpdf.sty is very useful if you need conditional
+% compilation based on whether the output is pdf or dvi.
+% usage:
+% \ifpdf
+%   % pdf code
+% \else
+%   % dvi code
+% \fi
+% The latest version of ifpdf.sty can be obtained from:
+% http://www.ctan.org/pkg/ifpdf
+% Also, note that IEEEtran.cls V1.7 and later provides a builtin
+% \ifCLASSINFOpdf conditional that works the same way.
+% When switching from latex to pdflatex and vice-versa, the compiler may
+% have to be run twice to clear warning/error messages.
+
+
+
+
+
+
+% *** CITATION PACKAGES ***
+%
+\usepackage{cite}
+% cite.sty was written by Donald Arseneau
+% V1.6 and later of IEEEtran pre-defines the format of the cite.sty package
+% \cite{} output to follow that of the IEEE. Loading the cite package will
+% result in citation numbers being automatically sorted and properly
+% "compressed/ranged". e.g., [1], [9], [2], [7], [5], [6] without using
+% cite.sty will become [1], [2], [5]--[7], [9] using cite.sty. cite.sty's
+% \cite will automatically add leading space, if needed. Use cite.sty's
+% noadjust option (cite.sty V3.8 and later) if you want to turn this off
+% such as if a citation ever needs to be enclosed in parenthesis.
+% cite.sty is already installed on most LaTeX systems. Be sure and use
+% version 5.0 (2009-03-20) and later if using hyperref.sty.
+% The latest version can be obtained at:
+% http://www.ctan.org/pkg/cite
+% The documentation is contained in the cite.sty file itself.
+
+
+
+
+
+
+% *** GRAPHICS RELATED PACKAGES ***
+%
+\ifCLASSINFOpdf
+  \usepackage[pdftex]{graphicx}
+  % declare the path(s) where your graphic files are
+  \graphicspath{{../pdf/}{../jpeg/}{png/}}
+  % and their extensions so you won't have to specify these with
+  % every instance of \includegraphics
+  \DeclareGraphicsExtensions{.pdf,.jpeg,.png}
+\else
+  % or other class option (dvipsone, dvipdf, if not using dvips). graphicx
+  % will default to the driver specified in the system graphics.cfg if no
+  % driver is specified.
+  % \usepackage[dvips]{graphicx}
+  % declare the path(s) where your graphic files are
+  % \graphicspath{{../eps/}}
+  % and their extensions so you won't have to specify these with
+  % every instance of \includegraphics
+  % \DeclareGraphicsExtensions{.eps}
+\fi
+% graphicx was written by David Carlisle and Sebastian Rahtz. It is
+% required if you want graphics, photos, etc. graphicx.sty is already
+% installed on most LaTeX systems. The latest version and documentation
+% can be obtained at: 
+% http://www.ctan.org/pkg/graphicx
+% Another good source of documentation is "Using Imported Graphics in
+% LaTeX2e" by Keith Reckdahl which can be found at:
+% http://www.ctan.org/pkg/epslatex
+%
+% latex, and pdflatex in dvi mode, support graphics in encapsulated
+% postscript (.eps) format. pdflatex in pdf mode supports graphics
+% in .pdf, .jpeg, .png and .mps (metapost) formats. Users should ensure
+% that all non-photo figures use a vector format (.eps, .pdf, .mps) and
+% not a bitmapped formats (.jpeg, .png). The IEEE frowns on bitmapped formats
+% which can result in "jaggedy"/blurry rendering of lines and letters as
+% well as large increases in file sizes.
+%
+% You can find documentation about the pdfTeX application at:
+% http://www.tug.org/applications/pdftex
+
+
+
+
+
+% *** MATH PACKAGES ***
+%
+%\usepackage{amsmath}
+% A popular package from the American Mathematical Society that provides
+% many useful and powerful commands for dealing with mathematics.
+%
+% Note that the amsmath package sets \interdisplaylinepenalty to 10000
+% thus preventing page breaks from occurring within multiline equations. Use:
+%\interdisplaylinepenalty=2500
+% after loading amsmath to restore such page breaks as IEEEtran.cls normally
+% does. amsmath.sty is already installed on most LaTeX systems. The latest
+% version and documentation can be obtained at:
+% http://www.ctan.org/pkg/amsmath
+
+
+
+
+
+% *** SPECIALIZED LIST PACKAGES ***
+%
+%\usepackage{algorithmic}
+% algorithmic.sty was written by Peter Williams and Rogerio Brito.
+% This package provides an algorithmic environment fo describing algorithms.
+% You can use the algorithmic environment in-text or within a figure
+% environment to provide for a floating algorithm. Do NOT use the algorithm
+% floating environment provided by algorithm.sty (by the same authors) or
+% algorithm2e.sty (by Christophe Fiorio) as the IEEE does not use dedicated
+% algorithm float types and packages that provide these will not provide
+% correct IEEE style captions. The latest version and documentation of
+% algorithmic.sty can be obtained at:
+% http://www.ctan.org/pkg/algorithms
+% Also of interest may be the (relatively newer and more customizable)
+% algorithmicx.sty package by Szasz Janos:
+% http://www.ctan.org/pkg/algorithmicx
+
+
+
+
+% *** ALIGNMENT PACKAGES ***
+%
+%\usepackage{array}
+% Frank Mittelbach's and David Carlisle's array.sty patches and improves
+% the standard LaTeX2e array and tabular environments to provide better
+% appearance and additional user controls. As the default LaTeX2e table
+% generation code is lacking to the point of almost being broken with
+% respect to the quality of the end results, all users are strongly
+% advised to use an enhanced (at the very least that provided by array.sty)
+% set of table tools. array.sty is already installed on most systems. The
+% latest version and documentation can be obtained at:
+% http://www.ctan.org/pkg/array
+
+
+% IEEEtran contains the IEEEeqnarray family of commands that can be used to
+% generate multiline equations as well as matrices, tables, etc., of high
+% quality.
+
+
+
+
+% *** SUBFIGURE PACKAGES ***
+%\ifCLASSOPTIONcompsoc
+%  \usepackage[caption=false,font=normalsize,labelfont=sf,textfont=sf]{subfig}
+%\else
+%  \usepackage[caption=false,font=footnotesize]{subfig}
+%\fi
+% subfig.sty, written by Steven Douglas Cochran, is the modern replacement
+% for subfigure.sty, the latter of which is no longer maintained and is
+% incompatible with some LaTeX packages including fixltx2e. However,
+% subfig.sty requires and automatically loads Axel Sommerfeldt's caption.sty
+% which will override IEEEtran.cls' handling of captions and this will result
+% in non-IEEE style figure/table captions. To prevent this problem, be sure
+% and invoke subfig.sty's "caption=false" package option (available since
+% subfig.sty version 1.3, 2005/06/28) as this is will preserve IEEEtran.cls
+% handling of captions.
+% Note that the Computer Society format requires a larger sans serif font
+% than the serif footnote size font used in traditional IEEE formatting
+% and thus the need to invoke different subfig.sty package options depending
+% on whether compsoc mode has been enabled.
+%
+% The latest version and documentation of subfig.sty can be obtained at:
+% http://www.ctan.org/pkg/subfig
+
+
+
+
+% *** FLOAT PACKAGES ***
+%
+%\usepackage{fixltx2e}
+% fixltx2e, the successor to the earlier fix2col.sty, was written by
+% Frank Mittelbach and David Carlisle. This package corrects a few problems
+% in the LaTeX2e kernel, the most notable of which is that in current
+% LaTeX2e releases, the ordering of single and double column floats is not
+% guaranteed to be preserved. Thus, an unpatched LaTeX2e can allow a
+% single column figure to be placed prior to an earlier double column
+% figure.
+% Be aware that LaTeX2e kernels dated 2015 and later have fixltx2e.sty's
+% corrections already built into the system in which case a warning will
+% be issued if an attempt is made to load fixltx2e.sty as it is no longer
+% needed.
+% The latest version and documentation can be found at:
+% http://www.ctan.org/pkg/fixltx2e
+
+
+%\usepackage{stfloats}
+% stfloats.sty was written by Sigitas Tolusis. This package gives LaTeX2e
+% the ability to do double column floats at the bottom of the page as well
+% as the top. (e.g., "\begin{figure*}[!b]" is not normally possible in
+% LaTeX2e). It also provides a command:
+%\fnbelowfloat
+% to enable the placement of footnotes below bottom floats (the standard
+% LaTeX2e kernel puts them above bottom floats). This is an invasive package
+% which rewrites many portions of the LaTeX2e float routines. It may not work
+% with other packages that modify the LaTeX2e float routines. The latest
+% version and documentation can be obtained at:
+% http://www.ctan.org/pkg/stfloats
+% Do not use the stfloats baselinefloat ability as the IEEE does not allow
+% \baselineskip to stretch. Authors submitting work to the IEEE should note
+% that the IEEE rarely uses double column equations and that authors should try
+% to avoid such use. Do not be tempted to use the cuted.sty or midfloat.sty
+% packages (also by Sigitas Tolusis) as the IEEE does not format its papers in
+% such ways.
+% Do not attempt to use stfloats with fixltx2e as they are incompatible.
+% Instead, use Morten Hogholm'a dblfloatfix which combines the features
+% of both fixltx2e and stfloats:
+%
+% \usepackage{dblfloatfix}
+% The latest version can be found at:
+% http://www.ctan.org/pkg/dblfloatfix
+
+
+
+
+%\ifCLASSOPTIONcaptionsoff
+%  \usepackage[nomarkers]{endfloat}
+% \let\MYoriglatexcaption\caption
+% \renewcommand{\caption}[2][\relax]{\MYoriglatexcaption[#2]{#2}}
+%\fi
+% endfloat.sty was written by James Darrell McCauley, Jeff Goldberg and 
+% Axel Sommerfeldt. This package may be useful when used in conjunction with 
+% IEEEtran.cls'  captionsoff option. Some IEEE journals/societies require that
+% submissions have lists of figures/tables at the end of the paper and that
+% figures/tables without any captions are placed on a page by themselves at
+% the end of the document. If needed, the draftcls IEEEtran class option or
+% \CLASSINPUTbaselinestretch interface can be used to increase the line
+% spacing as well. Be sure and use the nomarkers option of endfloat to
+% prevent endfloat from "marking" where the figures would have been placed
+% in the text. The two hack lines of code above are a slight modification of
+% that suggested by in the endfloat docs (section 8.4.1) to ensure that
+% the full captions always appear in the list of figures/tables - even if
+% the user used the short optional argument of \caption[]{}.
+% IEEE papers do not typically make use of \caption[]'s optional argument,
+% so this should not be an issue. A similar trick can be used to disable
+% captions of packages such as subfig.sty that lack options to turn off
+% the subcaptions:
+% For subfig.sty:
+% \let\MYorigsubfloat\subfloat
+% \renewcommand{\subfloat}[2][\relax]{\MYorigsubfloat[]{#2}}
+% However, the above trick will not work if both optional arguments of
+% the \subfloat command are used. Furthermore, there needs to be a
+% description of each subfigure *somewhere* and endfloat does not add
+% subfigure captions to its list of figures. Thus, the best approach is to
+% avoid the use of subfigure captions (many IEEE journals avoid them anyway)
+% and instead reference/explain all the subfigures within the main caption.
+% The latest version of endfloat.sty and its documentation can obtained at:
+% http://www.ctan.org/pkg/endfloat
+%
+% The IEEEtran \ifCLASSOPTIONcaptionsoff conditional can also be used
+% later in the document, say, to conditionally put the References on a 
+% page by themselves.
+
+
+
+
+% *** PDF, URL AND HYPERLINK PACKAGES ***
+%
+\usepackage{url}
+% url.sty was written by Donald Arseneau. It provides better support for
+% handling and breaking URLs. url.sty is already installed on most LaTeX
+% systems. The latest version and documentation can be obtained at:
+% http://www.ctan.org/pkg/url
+% Basically, \url{my_url_here}.
+
+
+
+
+% *** Do not adjust lengths that control margins, column widths, etc. ***
+% *** Do not use packages that alter fonts (such as pslatex).         ***
+% There should be no need to do such things with IEEEtran.cls V1.6 and later.
+% (Unless specifically asked to do so by the journal or conference you plan
+% to submit to, of course. )
+
+
+% correct bad hyphenation here
+\hyphenation{op-tical net-works semi-conduc-tor}
+
+
+\begin{document}
+%
+% paper title
+% Titles are generally capitalized except for words such as a, an, and, as,
+% at, but, by, for, in, nor, of, on, or, the, to and up, which are usually
+% not capitalized unless they are the first or last word of the title.
+% Linebreaks \\ can be used within to get better formatting as desired.
+% Do not put math or special symbols in the title.
+\title{GDQ Donation Analysis}
+%
+%
+% author names and IEEE memberships
+% note positions of commas and nonbreaking spaces ( ~ ) LaTeX will not break
+% a structure at a ~ so this keeps an author's name from being broken across
+% two lines.
+% use \thanks{} to gain access to the first footnote area
+% a separate \thanks must be used for each paragraph as LaTeX2e's \thanks
+% was not built to handle multiple paragraphs
+%
+
+\author{Kevin~Hardy% <-this % stops a space
+\thanks{K. Hardy is with New Mexito Tech.}% <-this % stops a space
+}
+
+% note the % following the last \IEEEmembership and also \thanks - 
+% these prevent an unwanted space from occurring between the last author name
+% and the end of the author line. i.e., if you had this:
+% 
+% \author{....lastname \thanks{...} \thanks{...} }
+%                     ^------------^------------^----Do not want these spaces!
+%
+% a space would be appended to the last name and could cause every name on that
+% line to be shifted left slightly. This is one of those "LaTeX things". For
+% instance, "\textbf{A} \textbf{B}" will typeset as "A B" not "AB". To get
+% "AB" then you have to do: "\textbf{A}\textbf{B}"
+% \thanks is no different in this regard, so shield the last } of each \thanks
+% that ends a line with a % and do not let a space in before the next \thanks.
+% Spaces after \IEEEmembership other than the last one are OK (and needed) as
+% you are supposed to have spaces between the names. For what it is worth,
+% this is a minor point as most people would not even notice if the said evil
+% space somehow managed to creep in.
+
+
+
+% The paper headers
+\markboth{Journal of \LaTeX\ Class Files,~Vol.~14, No.~8, August~2015}%
+{Shell \MakeLowercase{\textit{et al.}}: Bare Demo of IEEEtran.cls for IEEE Journals}
+% The only time the second header will appear is for the odd numbered pages
+% after the title page when using the twoside option.
+% 
+% *** Note that you probably will NOT want to include the author's ***
+% *** name in the headers of peer review papers.                   ***
+% You can use \ifCLASSOPTIONpeerreview for conditional compilation here if
+% you desire.
+
+
+
+
+% If you want to put a publisher's ID mark on the page you can do it like
+% this:
+%\IEEEpubid{0000--0000/00\$00.00~\copyright~2015 IEEE}
+% Remember, if you use this you must call \IEEEpubidadjcol in the second
+% column for its text to clear the IEEEpubid mark.
+
+
+
+% use for special paper notices
+%\IEEEspecialpapernotice{(Invited Paper)}
+
+
+
+
+% make the title area
+\maketitle
+
+% As a general rule, do not put math, special symbols or citations
+% in the abstract or keywords.
+\begin{abstract}
+The biannual Games Done Quick events, hosted on Twitch.tv, raise money for the Prevent Cancer Foundation and Doctors Without Borders. These events grow larger each year and donation data is publicly available. In this paper, we scrape the available data with the Scrapy library for Python as well as analyze and visualize the dataset in R and Minitab. The GDQ events' donation totals grow linearly year to year, and the mean and median donation also grow significantly. A few games and games series', including Super Metroid and the Zelda series, repeat in raising top donation totals and significant portions of each event's overall donation totals.
+\end{abstract}
+
+% Note that keywords are not normally used for peerreview papers.
+\begin{IEEEkeywords}
+Data Analysis, Video Games, Donation, Game Done Quick, Awesome Games Done Quick, Summer Games Done Quick, AGDQ, SGDQ, Twitch.tv, R, Python, Scrapy, Minitab
+\end{IEEEkeywords}
+
+
+
+
+
+
+% For peer review papers, you can put extra information on the cover
+% page as needed:
+% \ifCLASSOPTIONpeerreview
+% \begin{center} \bfseries EDICS Category: 3-BBND \end{center}
+% \fi
+%
+% For peerreview papers, this IEEEtran command inserts a page break and
+% creates the second title. It will be ignored for other modes.
+\IEEEpeerreviewmaketitle
+
+
+
+\section{Introduction}
+% The very first letter is a 2 line initial drop letter followed
+% by the rest of the first word in caps.
+% 
+% form to use if the first word consists of a single letter:
+% \IEEEPARstart{A}{demo} file is ....
+% 
+% form to use if you need the single drop letter followed by
+% normal text (unknown if ever used by the IEEE):
+% \IEEEPARstart{A}{}demo file is ....
+% 
+% Some journals put the first two words in caps:
+% \IEEEPARstart{T}{his demo} file is ....
+% 
+% Here we have the typical use of a "T" for an initial drop letter
+% and "HIS" in caps to complete the first word.
+\IEEEPARstart{G}{ames} Done Quick (GDQ) is a biannual speedrunning event streamed via Twitch.tv which encourages donating to Doctors Without Borders, the Prevent Cancer Foundation, or similar charties depending on the event. Over the course of multiple days, many participants in GDQ complete video games as fast as possible while viewers on Twitch.tv watch, chat via Twitch chat, and donate to charity through the GDQ website. There are two main events per year, namely Awesome Games Done Quick (AGDQ) in February and Summer Games Done Quick (SGDQ) in July. Both events have been gaining in popularity each year, raising considerably more money for charity each year. In this paper, we analyze the donations during AGDQ and SGDQ events from 2011 through 2017 using data from publicly available GDQ donation tracker.
+
+
+% You must have at least 2 lines in the paragraph with the drop letter
+% (should never be an issue)
+%I wish you the best of success.
+
+%\hfill mds
+ 
+%\hfill August 26, 2015
+
+\section{Previous Work}
+
+Max Woolf, A.K.A "minimaxir", analyzed donations for AGDQ 2016 in his blog article "Video Games and Charity: Analyzing Awesome Games Done Quick 2016 Donations\cite{minimaxir}." In his analysis, he visualized the cumulative donation total for AGDQ 2016, a histogram of donation amounts, and provided bar charts for donation amounts earned by both runs and bid incentives. This paper expands on Woolf's analysis by comparing different GDQ events.
+
+\section {Tools}
+
+In this analysis, we scrape the data from the Games Done Quick website using the Python library Scrapy, merge the schedule and donation datasets using R, and apply data analysis and visualizations using R\cite{R} and Minitab 17\cite{Minitab}.
+
+\section{Data Collection}
+
+Game Done Quick donations and event schedules are available on their tracker https://gamesdonequick.com/tracker/. To collect the donation and schedule data, we can write a scraper. In this case, we use the Python\cite{python} library Scrapy\cite{scrapy}. This resulted in JSON files representing donations and schedules for each event. We scrape all Summer Games Done Quick events from 2011 though 2016 and Awesome Games Done Quick events from 2012 through 2017. The necessary scraped donation data was the donation time and donation amount, though other unused attributes including each person's donor ID and whether or not they commented was scraped as well. The necessary scraped schedule data includes the run name (called "game" in our scraper), the run's start time, and the run's end time. Additional attributes, including the run description, players involved in the run, and whether or not the run is part of a bid incentive, were also scraped.
+
+The resulting sets of donation and schedule JSON files then need to be merged. For this we load one of the schedule JSON files into R, set it to data frame called "runs", and write a function that returns the run name during given a datetime. See listing 1 for the R code.
+
+\begin{lstlisting}[caption={R code for merging GDQ donation and schedule data}\label{lst:1}]
+timeRun <- function(x) {
+    duringRun = (x > runs$starttime)
+    & (x < runs$endttime)
+    if (sum(duringRun, na.rm = T) > 0) {
+        return (runs$game[which(duringRun)])
+    }
+}
+\end{lstlisting}
+
+When running the above function with a time x that coincides with a run, it will return the run name. Using this function, we can do a mutation on a data frame of donations from that event to add a column to the donation table including the run name. If we load a JSON donations file into an R data frame called "donations", we can run the mutation as seen in listing 2.
+
+\begin{lstlisting}[caption={R code for merging GDQ donation and schedule data}\label{lst:2}]
+donations <- donations %>% mutate(
+             timeRun = sapply(time, timeRun))
+\end{lstlisting}
+
+The donations data frame now includes the columns donation amount, time of donation, and the run played during the donation. This data frame can be exported into a CSV file for further analysis in other tools. The process can be repeated for all of the scraped JSON files.
+
+\section{Analysis}
+
+With the donations and associated runs for each GDQ event in a handful of CSV files, we can now analyze the data.
+
+\subsection{Basic Statistics}
+
+The mean of individual donation amounts for early SGDQ and AGDQ events, including SGDQ 2011, AGDQ 2012, SGDQ 2012, AGDQ 2013, and SGDQ2013 is \$21.5 +/- \$4, though it rose to \$40 by AGDQ 2017. The median was \$10 for the 2011 and 2012 events but rose to \$15 and \$25 depending on the individual event with the highest median being \$25 during AGDQ2015. The number of donors also rose from 1,118 in SGDQ 2011 to 30,847 in SGDQ 2016, and from 5872 in AGDQ 2012 to 43,461 in AGDQ 2017. SGDQ 2011 raised \$21,396 in total while SGDQ 2016 raised \$992,553 in total. AGDQ 2012 raised \$131,638 in total while AGDQ 2017 raised \$1,790,550 in total. It's worth noting that each AGDQ and SGDQ event raised more money than each of their previous events, except for AGDQ 2016 which raised less money than AGDQ 2015. The higher medians indicate that each donor is donating more in general. The means being around double of the median indicate that high-value donors heavily skew the mean.
+
+\subsection{Histograms}
+
+Viewing histograms of donation amounts for each event helps us understand the changes in overall donation behavior that result in higher means and medians, and shows us how many people are donating at different amounts. These histograms in figures 1 though 4 were generated in Minitab 17.
+\begin{figure}
+	\centering
+	\includegraphics[scale=0.55]{SGDQ2011Histogram}
+	\caption{Histogram of SGDQ 2011 Donation Amounts}
+\end{figure}
+\begin{figure}
+	\centering
+	\includegraphics[scale=0.55]{SGDQ2016Histogram}
+	\caption{Histogram of SGDQ 2016 Donation Amounts}
+\end{figure}
+\begin{figure}
+	\centering
+	\includegraphics[scale=0.55]{AGDQ2012Histogram}
+	\caption{Histogram of AGDQ 2012 Donation Amounts}
+\end{figure}
+\begin{figure}
+	\centering
+	\includegraphics[scale=0.55]{AGDQ2017Histogram}
+	\caption{Histogram of AGDQ 2017 Donation Amounts}
+\end{figure}
+
+As expected based on the basic statistics, donations tend to be higher valued in later events. Especially notable is the growth in \$50, \$75, and \$100 donations. The range of these histograms only shows donation values from \$0 to \$100, but some other high values such as \$200 also show large growth from the old to more recent events.
+
+
+\subsection{Highest contributing runs}
+
+Since there are many runs of games in Games Done Quick, it is helpful to find out which events raise the most money overall. It might also be helpful to see which, if any, of the highest earning runs occur in many of the GDQ events.
+
+The schedules for GDQ events before 2015 on the GDQ donation tracker are incomplete, so the 2011 through 2014 events won't be used for this part of the analysis. The following bar charts were generated in R.
+
+\begin{figure}
+	\centering
+	\includegraphics[scale=0.4]{A2015Runs}
+	\caption{AGDQ 2015 Run Donation Totals}
+\end{figure}
+
+\begin{figure}
+	\centering
+	\includegraphics[scale=0.4]{S2015Runs}
+	\caption{SGDQ 2015 Run Donation Totals}
+\end{figure}
+
+\begin{figure}
+	\centering
+	\includegraphics[scale=0.4]{A2016Runs}
+	\caption{AGDQ 2016 Run Donation Totals}
+\end{figure}
+
+\begin{figure}
+	\centering
+	\includegraphics[scale=0.4]{S2016Runs}
+	\caption{SGDQ 2016 Run Donation Totals}
+\end{figure}
+
+\begin{figure}
+	\centering
+	\includegraphics[scale=0.4]{A2017Runs}
+	\caption{AGDQ 2017 Run Donation Totals}
+\end{figure}
+
+Every GDQ event has at least one Zelda series game run, one Super Mario series game run as well as a Super Metroid run in the top 15 highest donation earning runs.
+
+Super Metroid has a cultural reason to be in the top 15 for every GDQ event. Historically in the speedrunning community, it's always faster to leave a small group of alien animals to die in the final level of the game, but an early speedrunner beat the game so quickly that they both saved the animals (wasting around 25 seconds) and still beat the game's world record at the time. During every GDQ event, the bid incentive for "Save/Kill The Animals" has been a hotly debated topic and results in nearly equal bids for saving versus killing the animals. This is the most talked about bid during GDQ events.
+
+The other high-earning runs likely come down to general game and game series popularity.
+
+\subsection{Growth}
+
+We can also analyze growth of GDQ events overall. Since SGDQ events usually earn less than neighboring AGDQ events, SGDQ and AGDQ event totals grow at different rates. The growth also appears linear for each event, as we can see in the Linear regression plots in figures 10 and 11.
+
+
+\begin{figure}
+	\centering
+	\includegraphics[scale=0.55]{SGDQLinearRegression}
+	\caption{Linear Regression of SGDQ events}
+\end{figure}
+
+\begin{figure}
+	\centering
+	\includegraphics[scale=0.55]{AGDQLinearRegression}
+	\caption{Linear Regression of AGDQ events}
+\end{figure}
+
+Using the linear regression equations in the plots, we can predict the amounts that could be raised by the next events. We can expect SGDQ 2017 in July to raise around \$941,119 and AGDQ 2018 in February to raise around \$1,510,386. Whether the linear growth will actually continue for future events remains to be seen.
+
+We can also plot the running totals of each event over time since the start of each event. What we can notice from this figure is that recent events raise money at somewhat comparable rates until the final hours of each event. At the end of each event, especially the recent AGDQ 2017, there is a spike of donations and an immediate dropoff once the events end.
+
+
+\begin{figure}
+	\centering
+	\includegraphics[scale=0.55]{GDQScatterplot}
+	\caption{Line plot of GDQ event donation totals over time}
+\end{figure}
+
+
+\section{Discussion}
+
+Code and various artifacts of this project -- including the scraper, dataset, R workspace, Minitab file, and generated visualizations -- are available in this project's Github repository \cite{gdqgit}.
+
+Running the code requires installing scrapy through PyPi. The dplyr and magrittr packages need to be installed in R to merge the schedule and donation data using the method in the available code.
+
+% needed in second column of first page if using \IEEEpubid
+%\IEEEpubidadjcol
+
+
+% An example of a floating figure using the graphicx package.
+% Note that \label must occur AFTER (or within) \caption.
+% For figures, \caption should occur after the \includegraphics.
+% Note that IEEEtran v1.7 and later has special internal code that
+% is designed to preserve the operation of \label within \caption
+% even when the captionsoff option is in effect. However, because
+% of issues like this, it may be the safest practice to put all your
+% \label just after \caption rather than within \caption{}.
+%
+% Reminder: the "draftcls" or "draftclsnofoot", not "draft", class
+% option should be used if it is desired that the figures are to be
+% displayed while in draft mode.
+%
+%\begin{figure}[!t]
+%\centering
+%\includegraphics[width=2.5in]{myfigure}
+% where an .eps filename suffix will be assumed under latex, 
+% and a .pdf suffix will be assumed for pdflatex; or what has been declared
+% via \DeclareGraphicsExtensions.
+%\caption{Simulation results for the network.}
+%\label{fig_sim}
+%\end{figure}
+
+% Note that the IEEE typically puts floats only at the top, even when this
+% results in a large percentage of a column being occupied by floats.
+
+
+% An example of a double column floating figure using two subfigures.
+% (The subfig.sty package must be loaded for this to work.)
+% The subfigure \label commands are set within each subfloat command,
+% and the \label for the overall figure must come after \caption.
+% \hfil is used as a separator to get equal spacing.
+% Watch out that the combined width of all the subfigures on a 
+% line do not exceed the text width or a line break will occur.
+%
+%\begin{figure*}[!t]
+%\centering
+%\subfloat[Case I]{\includegraphics[width=2.5in]{box}%
+%\label{fig_first_case}}
+%\hfil
+%\subfloat[Case II]{\includegraphics[width=2.5in]{box}%
+%\label{fig_second_case}}
+%\caption{Simulation results for the network.}
+%\label{fig_sim}
+%\end{figure*}
+%
+% Note that often IEEE papers with subfigures do not employ subfigure
+% captions (using the optional argument to \subfloat[]), but instead will
+% reference/describe all of them (a), (b), etc., within the main caption.
+% Be aware that for subfig.sty to generate the (a), (b), etc., subfigure
+% labels, the optional argument to \subfloat must be present. If a
+% subcaption is not desired, just leave its contents blank,
+% e.g., \subfloat[].
+
+
+% An example of a floating table. Note that, for IEEE style tables, the
+% \caption command should come BEFORE the table and, given that table
+% captions serve much like titles, are usually capitalized except for words
+% such as a, an, and, as, at, but, by, for, in, nor, of, on, or, the, to
+% and up, which are usually not capitalized unless they are the first or
+% last word of the caption. Table text will default to \footnotesize as
+% the IEEE normally uses this smaller font for tables.
+% The \label must come after \caption as always.
+%
+%\begin{table}[!t]
+%% increase table row spacing, adjust to taste
+%\renewcommand{\arraystretch}{1.3}
+% if using array.sty, it might be a good idea to tweak the value of
+% \extrarowheight as needed to properly center the text within the cells
+%\caption{An Example of a Table}
+%\label{table_example}
+%\centering
+%% Some packages, such as MDW tools, offer better commands for making tables
+%% than the plain LaTeX2e tabular which is used here.
+%\begin{tabular}{|c||c|}
+%\hline
+%One & Two\\
+%\hline
+%Three & Four\\
+%\hline
+%\end{tabular}
+%\end{table}
+
+
+% Note that the IEEE does not put floats in the very first column
+% - or typically anywhere on the first page for that matter. Also,
+% in-text middle ("here") positioning is typically not used, but it
+% is allowed and encouraged for Computer Society conferences (but
+% not Computer Society journals). Most IEEE journals/conferences use
+% top floats exclusively. 
+% Note that, LaTeX2e, unlike IEEE journals/conferences, places
+% footnotes above bottom floats. This can be corrected via the
+% \fnbelowfloat command of the stfloats package.
+
+\section{Conclusion}
+
+The growth of AGDQ and SGDQ events appears linear, so future donation totals could be predicted. The distribution of donation amounts seems to grow more even over the year, yielding a higher median and average donation. Multiple games and game series' repeatedly appear in the top fifteen games in relation to how much money they raise.
+
+
+\section{Future work}
+
+There is still some work to be done to provide a more complete analysis. We did not compare donation incentives (bids) between GDQ events. Repeat donor behavior was also not analyzed, though it could be analyzed since we have donor ID's for repeat, non-anonymous donors. The SGDQ 2017 and AGDQ 2018 donation total predictions should also be checked when those events pass.
+
+
+% if have a single appendix:
+%\appendix[Proof of the Zonklar Equations]
+% or
+%\appendix  % for no appendix heading
+% do not use \section anymore after \appendix, only \section*
+% is possibly needed
+
+% use appendices with more than one appendix
+% then use \section to start each appendix
+% you must declare a \section before using any
+% \subsection or using \label (\appendices by itself
+% starts a section numbered zero.)
+%
+
+
+\appendices
+%\section{Proof of the First Zonklar Equation}
+%Appendix one text goes here.
+
+% you can choose not to have a title for an appendix
+% if you want by leaving the argument blank
+%\section{}
+%Appendix two text goes here.
+
+
+% use section* for acknowledgment
+\section*{Acknowledgment}
+
+
+The author would like to thank Dr. Abdelmounaam Rezgui of New Mexico Tech for his Data Analysis course.
+
+
+% Can use something like this to put references on a page
+% by themselves when using endfloat and the captionsoff option.
+\ifCLASSOPTIONcaptionsoff
+  \newpage
+\fi
+
+
+
+% trigger a \newpage just before the given reference
+% number - used to balance the columns on the last page
+% adjust value as needed - may need to be readjusted if
+% the document is modified later
+%\IEEEtriggeratref{8}
+% The "triggered" command can be changed if desired:
+%\IEEEtriggercmd{\enlargethispage{-5in}}
+
+% references section
+
+% can use a bibliography generated by BibTeX as a .bbl file
+% BibTeX documentation can be easily obtained at:
+% http://mirror.ctan.org/biblio/bibtex/contrib/doc/
+% The IEEEtran BibTeX style support page is at:
+% http://www.michaelshell.org/tex/ieeetran/bibtex/
+%\bibliographystyle{IEEEtran}
+% argument is your BibTeX string definitions and bibliography database(s)
+%\bibliography{IEEEabrv,../bib/paper}
+%
+% <OR> manually copy in the resultant .bbl file
+% set second argument of \begin to the number of references
+% (used to reserve space for the reference number labels box)
+%\begin{thebibliography}{1}
+
+%\bibitem{IEEEhowto:kopka}
+%H.~Kopka and P.~W. Daly, \emph{A Guide to \LaTeX}, 3rd~ed.\hskip 1em plus
+%  0.5em minus 0.4em\relax Harlow, England: Addison-Wesley, 1999.
+
+%\end{thebibliography}
+
+
+
+\bibliography{mybib} 
+\bibliographystyle{ieeetr}
+
+% biography section
+% 
+% If you have an EPS/PDF photo (graphicx package needed) extra braces are
+% needed around the contents of the optional argument to biography to prevent
+% the LaTeX parser from getting confused when it sees the complicated
+% \includegraphics command within an optional argument. (You could create
+% your own custom macro containing the \includegraphics command to make things
+% simpler here.)
+%\begin{IEEEbiography}[{\includegraphics[width=1in,height=1.25in,clip,keepaspectratio]{mshell}}]{Michael Shell}
+% or if you just want to reserve a space for a photo:
+
+\begin{IEEEbiographynophoto}{Kevin Hardy}
+is pursuing a Bachelor's of Science in Computer Science at New Mexico Tech.
+\end{IEEEbiographynophoto}
+
+% if you will not have a photo at all:
+%\begin{IEEEbiographynophoto}{John Doe}
+%Biography text here.
+%\end{IEEEbiographynophoto}
+
+% insert where needed to balance the two columns on the last page with
+% biographies
+%\newpage
+
+%\begin{IEEEbiographynophoto}{Jane Doe}
+%Biography text here.
+%\end{IEEEbiographynophoto}
+
+% You can push biographies down or up by placing
+% a \vfill before or after them. The appropriate
+% use of \vfill depends on what kind of text is
+% on the last page and whether or not the columns
+% are being equalized.
+
+%\vfill
+
+% Can be used to pull up biographies so that the bottom of the last one
+% is flush with the other column.
+%\enlargethispage{-5in}
+
+% that's all folks
+\end{document}
+
+

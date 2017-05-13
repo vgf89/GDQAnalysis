@@ -28,7 +28,7 @@ In this analysis, we scrape the data from the Games Done Quick website using the
 
 Game Done Quick donations and event schedules are available on their tracker https://gamesdonequick.com/tracker/. To collect the donation and schedule data, we can write a scraper. In this case, we use the Python library Scrapy. This resulted in JSON files representing donations and schedules for each event. We scrape all Summer Games Done Quick events from 2011 though 2016 and Awesome Games Done Quick events from 2012 through 2017. The necessary scraped donation data was the donation time and donation amount, though other unused attributes including each person's donor ID and whether or not they commented was scraped as well. The necessary scraped schedule data includes the run name (called "game" in our scraper), the run's start time, and the run's end time. Additional attributes, including the run description, players involved in the run, and whether or not the run is part of a bid incentive, were also scraped.
 
-The resulting sets of donation and schedule JSON files then need to be merged. For this we load one of the schedule JSON files into R, set it to data frame called "runs", and write a function that returns the run name during given a datetime:
+The resulting sets of donation and schedule JSON files then need to be merged. For this we load one of the schedule JSON files into R, set it to data frame called "runs", and write a function that returns the run name during given a datetime.
 
     timeRun <- function(x) {
         duringRun = (x > runs$starttime) & (x < runs$endttime)
