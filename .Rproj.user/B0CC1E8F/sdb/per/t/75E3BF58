@@ -1,0 +1,29 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1494409250375.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "75E3BF58",
+    "lastKnownWriteTime" : 1494387269,
+    "last_content_update" : 1494409250375,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "cacheKey" : "E2073DAD",
+        "caption" : "agdq2016_runs",
+        "contentUrl" : "grid_resource/gridviewer.html?env=&obj=agdq2016_runs&cache_key=E2073DAD",
+        "displayedObservations" : 15,
+        "environment" : "",
+        "object" : "agdq2016_runs",
+        "preview" : 0,
+        "totalObservations" : 15,
+        "variables" : 2
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_dataframe"
+}
